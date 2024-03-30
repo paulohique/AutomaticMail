@@ -120,6 +120,10 @@ def executar_pyautogui():
             pyautogui.hotkey("tab")
         time.sleep(5)
         pyautogui.press("enter")
+    if not pyautogui.confirm(text='Gostaria de fechar a automacão?', title='Término do uso', buttons=['OK', 'Cancel']):
+        return
+        
+    
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
