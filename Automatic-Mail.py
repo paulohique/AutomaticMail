@@ -74,9 +74,10 @@ def executar_pyautogui():
     pyautogui.press("win")
     pyautogui.write("Chrome")
     pyautogui.press("enter")
+    pyautogui.hotkey("ctrl","shift","n")
     pyautogui.click(x=1203, y=29)
-    for _ in range(14):
-        pyautogui.hotkey("tab")
+    # for _ in range(14):
+    #     pyautogui.hotkey("tab")
 
     pyautogui.write("https://mail.google.com/")
     pyautogui.press("enter")
