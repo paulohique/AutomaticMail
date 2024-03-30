@@ -1,8 +1,10 @@
 from __future__ import annotations
 import threading
-import pyautogui
 import time
 import pandas as pd
+import pyautogui
+import pyperclip
+import keyboard
 
 from PySide6 import QtCore, QtWidgets
 
@@ -69,11 +71,13 @@ def fazerOqTuQuiser(caminho):
 
 def executar_pyautogui():
     global texto1, texto2
+    # print(str(f'{texto1} {texto2}'))
     pyautogui.PAUSE = 1
     # abrir navegador e entrar no link
     pyautogui.press("win")
     pyautogui.write("Chrome")
     pyautogui.press("enter")
+    time.sleep(2)
     pyautogui.hotkey("ctrl","shift","n")
     pyautogui.click(x=1203, y=29)
     # for _ in range(14):
@@ -110,20 +114,23 @@ def executar_pyautogui():
         pyautogui.write(str(email))
         pyautogui.press("enter")
         pyautogui.press("tab")
-        pyautogui.write(str(texto2))
+        pyperclip.copy(str(texto2))
+        pyautogui.hotkey("ctrl", "v")
         pyautogui.press("tab")
-        pyautogui.write(f"Ola {nome}, {texto1}")
+        pyperclip.copy(str(texto1))
+        pyautogui.hotkey("ctrl", "v")
         pyautogui.press("tab")
-        pyautogui.write(f"{texto2}")
         pyautogui.press("enter")
         for _ in range(16):
             pyautogui.hotkey("tab")
         time.sleep(5)
         pyautogui.press("enter")
-    if not pyautogui.confirm(text='Gostaria de fechar a automacão?', title='Término do uso', buttons=['OK', 'Cancel']):
+    if  pyautogui.confirm(text='Acabou os nomes?', title='Término do uso', buttons=['Sim' , 'Não']):
         return
-        
-    
+
+# Função para inserir texto com acentos
+def escrever_com_acentos(texto):
+    keyboard.write(texto)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
@@ -132,4 +139,3 @@ if __name__ == '__main__':
     window.show()
 
     app.exec()
-
