@@ -1,7 +1,7 @@
 import pyperclip as pp
 
 
-resultado = 'Você é um pateta'
+resultado = 'Teste de ambiente pp'
 
 pp.copy(resultado)
 pp.paste()
